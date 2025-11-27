@@ -10,19 +10,19 @@
 
 #### タスク
 
-- [ ] Next.js プロジェクトの初期化（TypeScript, Tailwind CSS）
-- [ ] Supabase プロジェクトの作成・接続設定
-- [ ] 環境変数の設定（`.env.local`）
-- [ ] DB スキーマの作成
-  - [ ] `clinics` テーブル
-  - [ ] `staffs` テーブル
-  - [ ] `admins` テーブル
-  - [ ] `attendances` テーブル
-  - [ ] `attendance_logs` テーブル
-  - [ ] 必要な ENUM 型の作成
-  - [ ] インデックスの作成
-- [ ] Supabase クライアントのセットアップ
-- [ ] TypeScript 型定義の作成（DB スキーマ対応）
+- [x] Next.js プロジェクトの初期化（TypeScript, Tailwind CSS）
+- [x] Supabase プロジェクトの作成・接続設定
+- [ ] 環境変数の設定（`.env.local`）※手動で設定が必要
+- [x] DB スキーマの作成
+  - [x] `clinics` テーブル
+  - [x] `staffs` テーブル
+  - [x] `admins` テーブル
+  - [x] `attendances` テーブル
+  - [x] `attendance_logs` テーブル
+  - [x] 必要な ENUM 型の作成
+  - [x] インデックスの作成
+- [x] Supabase クライアントのセットアップ
+- [x] TypeScript 型定義の作成（DB スキーマ対応）
 
 **依存関係**: なし
 
@@ -200,11 +200,16 @@
 
 ### 現在のフェーズ
 
-**Phase 1: プロジェクト基盤・DBスキーマ** - 未着手
+**Phase 1: プロジェクト基盤・DBスキーマ** - ほぼ完了（環境変数設定を除く）
 
 ### 完了済みタスク
 
-（実装開始後に更新）
+- Phase 1: プロジェクト基盤・DBスキーマ（2025-11-27）
+  - Next.js プロジェクトの初期化（TypeScript, Tailwind CSS）
+  - Supabase クライアントのセットアップ（`lib/supabase/client.ts`, `lib/supabase/server.ts`）
+  - DB スキーマ SQL ファイルの作成（`supabase/schema.sql`）
+  - TypeScript 型定義の作成（`types/database.ts`）
+  - プロジェクト設定ファイル（`package.json`, `tsconfig.json`, `next.config.js`, `tailwind.config.ts` 等）
 
 ### 次のマイルストーン
 
@@ -225,6 +230,6 @@
 
 ---
 
-最終更新: 2025-01-XX
+最終更新: 2025-11-27
 
 

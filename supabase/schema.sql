@@ -33,9 +33,16 @@ create table if not exists public.admins (
   unique (clinic_id, user_id)
 );
 
--- 4. ENUM 型の作成
-create type if not exists public.attendance_source as enum ('tablet', 'admin');
-create type if not exists public.attendance_status as enum ('open', 'closed');
+-- 4. ENUM 型の作成（既に存在する場合はスキップ）
+do $$ 
+begin
+  if not exists (select 1 from pg_type where typname = 'attendance_source') then
+    create type public.attendance_source as enum ('tablet', 'admin');
+  end if;
+  if not exists (select 1 from pg_type where typname = 'attendance_status') then
+    create type public.attendance_status as enum ('open', 'closed');
+  end if;
+end $$;
 
 -- 5. attendances（勤怠レコード）
 create table if not exists public.attendances (
@@ -67,8 +74,13 @@ create table if not exists public.attendances (
 create index if not exists idx_attendances_clinic_date on public.attendances (clinic_id, work_date);
 create index if not exists idx_attendances_staff_date on public.attendances (staff_id, work_date);
 
--- 6. ENUM 型の作成（attendance_logs用）
-create type if not exists public.attendance_log_type as enum ('create', 'clock_in', 'clock_out', 'edit');
+-- 6. ENUM 型の作成（attendance_logs用、既に存在する場合はスキップ）
+do $$ 
+begin
+  if not exists (select 1 from pg_type where typname = 'attendance_log_type') then
+    create type public.attendance_log_type as enum ('create', 'clock_in', 'clock_out', 'edit');
+  end if;
+end $$;
 
 -- 7. attendance_logs（修正履歴）
 create table if not exists public.attendance_logs (
